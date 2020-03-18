@@ -1,6 +1,6 @@
 {
   "name": "@isaac.scarrott/react-type-it",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simulate typing in a react component. Supports delay backspace and timing. Minimal dependency",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,7 +8,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Isaac Scarrott",
-  "license": "MIT",
+  "license": "GPL-3.0",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/isaac-scarrott/react-type-it"
+  },
   "peerDependencies": {
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
