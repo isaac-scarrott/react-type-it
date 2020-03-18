@@ -29,6 +29,7 @@ import TypeIt, {TypeItInput} from '@isaac.scarrott/react-type-it';
 | Component   | Name     | Type    | Default | Description                                                        |
 | ----------- |:--------:| -------:| -------:|-------------------------------------------------------------------:|
 | TypeIt      | loop     | boolean | false   |Describes if the type animation loops                               |
+| TypeIt      | style    | object  | {}      |Styles to be put on the text                                        |
 | TypeItInput | duration | number  | 2000    |Length of the animation (without delay) in ms                       |
 | TypeItInput | delay    | number  | 0       |Delay that the animation after which the animation will start       |
 | TypeItInput | backspace| number  | 0       |Number of characters that the component will backspace before typing|

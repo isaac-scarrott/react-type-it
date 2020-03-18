@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 import {useTypewriteLinesExtraction} from './typeWriteExtraction';
 
-import {TypeItInterface, TypeItInputInterface} from './interfaces'
+import { TypeItInterface, TypeItInputInterface } from "./interfaces";
 
 export function TypeIt(props: TypeItInterface) {
   const element = useTypewriteLinesExtraction(props);
@@ -17,12 +17,12 @@ export function TypeIt(props: TypeItInterface) {
   }, []);
 
   return (
-    <>{ element && element} <span style={ getCursorSyle(displayCursor) }>｜</span></ >
+    <>{ element && element} <span style={ getCursorSyle(displayCursor) }>｜</span></>
   );
 }
 
 export function TypeItInput(props: TypeItInputInterface) {
-  return <div style={{display: 'inline-block'}}>{props.children}</div>;
+  return <div style={{display: 'inline-block', ...props?.style, }}>{props.children}</div>;
 }
 
 const getCursorSyle = (display = false) => {

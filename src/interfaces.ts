@@ -1,11 +1,13 @@
 export interface TypeItInterface {
   loop?: boolean;
-  children: JSX.Element[] | JSX.Element;
+  style?: React.CSSProperties;
+  children?: any;
 }
 
 export interface TypeItInputInterface {
   delay?: number;
   backspace?: number;
   duration?: number;
-  children: string;
+  children?: any;
+  style?: React.CSSProperties;
 }
