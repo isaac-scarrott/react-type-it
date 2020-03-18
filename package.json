@@ -1,6 +1,6 @@
 {
   "name": "@isaac.scarrott/react-type-it",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simulate typing in a react component. Supports delay backspace and timing. Minimal dependency",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
