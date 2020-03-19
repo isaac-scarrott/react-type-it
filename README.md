@@ -14,15 +14,28 @@ npm i @isaac.scarrott/react-type-it
 import TypeIt, {TypeItInput} from '@isaac.scarrott/react-type-it';
 ```
 ```
-<TypeIt loop>
-  <TypeItInput>Hi, this is a react type it demo</TypeItInput>
-  <TypeItInput backspace={28} delay={2000}>I hope you like this packgae</TypeItInput>
-  <TypeItInput backspace={3}>age</TypeItInput>
-  <TypeItInput backspace={23} delay={28}>this is also my first NPM package</TypeItInput>
+<TypeIt
+  loop
+  className='typeItDemo'
+  style={{ color: "SteelBlue", fontSize: "40px" }}
+>
+  <TypeItInput>
+    Hi, this is a react type it demo
+  </TypeItInput>
+  <TypeItInput backspace={28} delay={2000}>
+    I hope you like this packgae
+  </TypeItInput>
+  <TypeItInput backspace={3} delay={300} duration={300}>
+    age
+  </TypeItInput>
+  <TypeItInput backspace={28} delay={2000}>
+    this is also my first NPM package
+  </TypeItInput>
+  <TypeItInput delay={2000}></TypeItInput>
 </TypeIt>
 ```
 
-![alt text](https://media.giphy.com/media/ZFv8Jc8cBsOpAZWGVj/giphy.gif "Logo Title Text 1")
+![alt text](https://media.giphy.com/media/ZZZfbXohNrUxAxZp8g/giphy.gif "Logo Title Text 1")
 
 #### Props
 

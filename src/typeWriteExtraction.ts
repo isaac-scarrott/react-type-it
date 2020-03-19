@@ -1,5 +1,6 @@
 import { TypeItInterface, TypeItInputInterface } from './interfaces';
-import React, { useEffect, useState, cloneElement } from 'react';
+import React, { useEffect, useState, cloneElement, useRef } from 'react';
+import { TypeItInput } from './typeIt';
 
 const delay = (time: number) => new Promise((resolve) => setTimeout(resolve, time));
 
@@ -10,36 +11,50 @@ function getTimePerCharacter(props: TypeItInputInterface, lengthOfCharactersCurr
 }
 
 export function useTypewriteLinesExtraction(props: TypeItInterface): React.ReactElement | null {
-  const [elementToRender, setElementToRender] = React.useState<React.ReactElement | null>(null);
+  const [elementToRender, setElementToRender] = useState<React.ReactElement | null>(React.createElement(TypeItInput));
 
   async function typeIt() {
-    const children = Array.isArray(props.children) ? props.children : [props.children];
+    if (!elementToRender) {
+      return;
+    }
 
+    const children = Array.isArray(props.children) ? props.children : [props.children];
     let charactersCurrentlyRendered = '';
 
     // Loop through each of the elements inside <TypeIt> component
     for (const element of children) {
-      await delay(element.props.delay || 0);
+      if (element.props?.children && typeof(element.props?.children) !== 'string') {
+        throw new Error('Can only have strings as children inside <TypeItInput>');
+      }
 
-      const timePerText = getTimePerCharacter(element.props, charactersCurrentlyRendered.length);
+      await delay(element.props.delay || 0);
+      const timePerText = getTimePerCharacter(element.props, charactersCurrentlyRendered?.length || 0);
 
       // Execute backspaces
-      for (const _ of Array.from(Array(element.props?.backspace || charactersCurrentlyRendered.length))) {
+      for (const _ of Array.from(Array(element.props?.backspace || charactersCurrentlyRendered?.length  || 0))) {
         charactersCurrentlyRendered = charactersCurrentlyRendered.slice(0, -1);
 
         setElementToRender(
-          cloneElement(element, {style: {...props?.style}}, charactersCurrentlyRendered)
+          cloneElement(
+            elementToRender,
+            { style: { ...props?.style } },
+            charactersCurrentlyRendered
+          )
         );
 
         await delay(timePerText);
       }
 
       // Execute typing of characters
-      for (const character of element.props.children) {
+      for (const character of element.props?.children || []) {
         charactersCurrentlyRendered += character;
 
         setElementToRender(
-          cloneElement(element, {style: {...props?.style}}, charactersCurrentlyRendered)
+          cloneElement(
+            elementToRender,
+            { style: { ...props?.style } },
+            charactersCurrentlyRendered
+          )
         );
 
         await delay(timePerText);

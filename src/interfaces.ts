@@ -1,4 +1,5 @@
 export interface TypeItInterface {
+  className?: string;
   loop?: boolean;
   style?: React.CSSProperties;
   children?: any;
